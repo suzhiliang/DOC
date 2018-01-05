@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://www.mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <context id="context1" >
+  	<commentGenerator><property name="javaFileEncoding" value="UTF-8"/></commentGenerator>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/iqauthmaster?characterEncoding=utf8" userId="root" password="root" />
+    <javaModelGenerator targetPackage="com.iqcloud.auth.entity" targetProject="IQAuthDubboService/src/main/java" />
+    <sqlMapGenerator targetPackage="mybatisDb.mybatis.map" targetProject="IQAuthDubboService/src/main/resources" />
+    <javaClientGenerator targetPackage="com.iqcloud.auth.dao.db" targetProject="IQAuthDubboService/src/main/java" type="XMLMAPPER" />
+    <table tableName="iq_organization" 
+    	   enableCountByExample="false" enableUpdateByExample="false" 
+           enableDeleteByExample="false" enableSelectByExample="false" 
+           selectByExampleQueryId="false">
+    </table>
+  </context>
+</generatorConfiguration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

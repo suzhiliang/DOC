@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<!-- <beans:bean id="nullObjectMapper" class="com.iqcloud.auth.commons.utils.NullToStringMapper"/> -->
+	<context:component-scan base-package="com.iqcloud.common" />
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven >
+		<mvc:message-converters register-defaults="true">
+			<beans:bean id="jsonHttpMessageConverter"
+				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+				<beans:property name="supportedMediaTypes">
+				<beans:list>
+					<beans:value>application/json;charset=UTF-8</beans:value>
+					<beans:value>text/plain;charset=UTF-8</beans:value>
+				</beans:list>
+				</beans:property> 
+				<!-- <beans:property name="objectMapper" ref="nullObjectMapper"></beans:property>   -->
+			</beans:bean>
+			<beans:bean id="stringHttpMessageConverter"
+				class="org.springframework.http.converter.StringHttpMessageConverter" />
+			<beans:bean id="formHttpMessageConverter"
+				class="org.springframework.http.converter.FormHttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 静态资源访问 --> 
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:default-servlet-handler />
+    
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <beans:property name="defaultEncoding" value="utf-8"></beans:property>   
+        <beans:property name="maxUploadSize" value="10485760000"></beans:property>  
+        <beans:property name="maxInMemorySize" value="40960"></beans:property>  
+   	</beans:bean> 
+</beans:beans>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	 http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+		<dubbo:application name="${iqcommondubboservice.application.name}"/>
+		<!--通过注册中心获取monitor地址后建立连接--> 
+		<!-- <dubbo:monitor protocol="registry" /> -->
+		<!--绕过注册中心直连monitor，同consumer直连--> 
+		<!-- <dubbo:monitor address="${monitor.address}" />   -->
+
+		<dubbo:registry address="${zookeeper.address}" file="${dubbocache.iqcommondubboservice}" />
+        <dubbo:protocol name="dubbo" port="${iqcommondubboservice.dubbo.port}" />
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
